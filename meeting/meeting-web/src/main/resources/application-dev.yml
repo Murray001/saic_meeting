@@ -38,8 +38,8 @@ spring:
       max-file-size: 30MB
       max-request-size: 100MB
 
-logging:
-  config: classpath:logback-spring.xml
+#logging:
+#  config: classpath:logback-spring.xml
 
 
 #mybatis-plus:
