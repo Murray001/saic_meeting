@@ -1,0 +1,121 @@
+#server:
+#  port: 20001
+
+  #本地环境
+config:
+  db:
+    ip: 127.0.0.1
+    port: 3306
+    username: root
+    password: root
+  redis:
+    ip: 127.0.0.1
+    port: 6379
+    password: root
+#    password: 123456
+#  es:
+#    ip: 127.0.0.1
+#    port: 9300
+#    clusterName: elasticsearch
+#  regcenter:
+#    ip: 127.0.0.1
+#    prot: 8801
+#    username: admin
+#    password: 123456
+
+spring:
+  application:
+    name: es-redis-mq
+  profiles: dev
+  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${config.db.ip}:${config.db.port}/meeting?characterEncoding=utf8&useSSL=false&allowMultiQueries=true&serverTimezone=UTC
+    username: ${config.db.username}
+    password: ${config.db.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: ${config.redis.ip}
+    port: ${config.redis.port}
+    password: ${config.redis.password}
+    jedis:
+      pool:
+        max-wait: 10000
+        max-idle: 200
+    timeout: 10000
+    block-when-exhausted: true
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 100MB
+  #心跳检查 路径 默认 RestClientProperties类 http://localhost:9200
+  elasticsearch:
+    rest:
+      uris: http://${config.es.ip}:9200 #["http://192.168.10.236:9200"]
+
+  mail:
+    host: smtp.163.com
+    username: 15021361926@163.com
+    password: MHLHUOPJTVHPPBOH
+    sendUser: yjp
+    to: 1434300254@qq.com
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+    default-encoding: UTF-8
+    port: 465
+
+
+#系统设置
+system:
+  email:
+    sendAddress: 15021361926@163.com
+    sendUser: yjp
+    sendPwd: jinping.yan
+    errorAddress: 1434300254@qq.com
+    errorTitle: 系统异常
+  sms:
+    accessKeyId: LTAI4GFtPoFubHRiXPug7b3Z
+    accessKeySecret: JsEcknUUS8Bq2iiJtSvcnPo2IOEArG
+    signName: 生日祝福
+    domain: dysmsapi.aliyuncs.com
+    version: 2017-05-25
+    action: SendSms
+    regionId: default
+  base:
+    tokenMax: 5
+    tokenValidDay: 7
+
+file:
+  fileTmpPath: /tmp
+
+elasticsearch:
+  host: ${config.es.ip}
+  port: ${config.es.port}
+  clusterName: ${config.es.clusterName}
+
+logging:
+  config: classpath:logback-spring.xml
+
+
+#mybatis-plus:
+#  config-location: classpath:mapper/*.xml
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.longjin.model.order.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    ## 注册服务中心的配置
+    service-url:
+      defaultZone: http://${config.regcenter.username}:${config.regcenter.password}@${config.regcenter.ip}:${config.regcenter.prot}/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 2 #每间隔2s，向服务端发送一次心跳，证明自己依然"活着"（默认是30秒）
+    lease-expiration-duration-in-seconds: 5 #告诉服务端，如果我5s之内没有给你发心跳，就代表我“死”了，将我踢出掉（默认是90秒）
