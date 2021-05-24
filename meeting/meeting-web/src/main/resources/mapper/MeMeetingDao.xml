@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saic.meeting.dao.MeMeetingDao">
+
+    <resultMap id="BaseResultMap" type="com.saic.meeting.model.MeMeetingAm">
+        <id property="meeting_id" column="meetingId" />
+        <result property="meeting_type" column="meetingType" />
+        <result property="org_code" column="orgCode" />
+        <result property="dealer_code" column="dealerCode" />
+        <result property="dealer_name" column="dealerName" />
+        <result property="user_id" column="userId" />
+        <result property="meeting_date" column="meetingDate" />
+        <result property="meeting_address" column="meetingAddress" />
+        <result property="longitude" column="longitude" />
+        <result property="latitude" column="latitude" />
+        <result property="create_by" column="createBy" />
+        <result property="create_date" column="createDate" />
+        <result property="update_by" column="updateBy" />
+        <result property="update_date" column="updateDate" />
+    </resultMap>
+
+    <insert id="save" parameterType="com.saic.meeting.model.MeMeetingAm">
+      insert into t_me_meeting_am (meeting_type, dealer_code, user_id, meeting_date, meeting_address, longitude, latitude)
+      values (#{meetingType},#{dealerCode},#{userId},#{meetingDate},#{meetingAddress},#{longitude},#{latitude})
+    </insert>
+
+    <select id="query" resultType="com.saic.meeting.model.MeMeetingAm">
+        select * from t_me_meeting_am
+    </select>
+
+</mapper>
