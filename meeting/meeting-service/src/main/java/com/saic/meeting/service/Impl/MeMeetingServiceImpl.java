@@ -5,8 +5,10 @@ import com.saic.meeting.dao.MeMeetingDao;
 import com.saic.meeting.model.MeMeetingAm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class MeMeetingServiceImpl implements MeMeetingService {
 
 
@@ -15,8 +17,7 @@ public class MeMeetingServiceImpl implements MeMeetingService {
 
 
     @Override
-    public String initMeeting() {
-        MeMeetingAm am = new MeMeetingAm();
+    public String initMeeting(MeMeetingAm am) {
         am.setDealerCode("MQ2115B");
         am.setDealerName("测试1");
         am.setLongitude("105.374626");

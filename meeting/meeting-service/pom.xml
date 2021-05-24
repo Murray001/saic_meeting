@@ -15,13 +15,18 @@
             <groupId>com.saic</groupId>
             <artifactId>meeting-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <!--<scope>compile</scope>-->
         </dependency>
         <dependency>
             <groupId>com.saic</groupId>
             <artifactId>meeting-dao</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <!--<scope>compile</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>com.saic</groupId>
+            <artifactId>meeting-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

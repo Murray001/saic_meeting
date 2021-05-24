@@ -16,16 +16,11 @@
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
-        <!--<dependency>
-            <groupId>com.saic</groupId>
-            <artifactId>meeting-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>-->
         <dependency>
             <groupId>com.saic</groupId>
             <artifactId>meeting-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <!--<scope>compile</scope>-->
         </dependency>
         <dependency>
             <groupId>com.saic</groupId>
@@ -56,7 +51,28 @@
 
     </dependencies>
 
+    <!-- yml多环境配置 2020/04/23-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <!-- 环境标识，需要与配置文件的名称相对应 -->
+                <activatedProperties>dev</activatedProperties>
+            </properties>
+            <activation>
+                <!-- 默认环境 -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
     <build>
+        <resources>
+            <!--指定资源的位置-->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -64,5 +80,7 @@
             </plugin>
         </plugins>
     </build>
+
+
 
 </project>

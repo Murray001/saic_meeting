@@ -1,5 +1,8 @@
 package com.saic.meeting;
 
+
+import com.saic.meeting.model.MeMeetingAm;
+
 public interface MeMeetingService {
-    String initMeeting();
+    String initMeeting(MeMeetingAm am);
 }
