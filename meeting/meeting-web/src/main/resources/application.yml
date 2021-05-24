@@ -1,7 +1,7 @@
 server:
   port: 20000
   servlet:
-    context-path: /erm
+    context-path: /meeting
   max-http-header-size: 10240
   tomcat:
     uri-encoding: UTF-8
