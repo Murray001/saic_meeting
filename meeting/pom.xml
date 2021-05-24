@@ -32,7 +32,6 @@
 
     <modules>
         <module>meeting-web</module>
-        <module>meeting-api</module>
         <module>meeting-comm</module>
         <module>meeting-api</module>
         <module>meeting-service</module>

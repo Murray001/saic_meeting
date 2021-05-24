@@ -25,7 +25,7 @@ public class MeMeetingServiceImpl implements MeMeetingService {
         am.setMeetingAddress("上海市闵行区富贵路101号");
         am.setMeetingDate("2021-05-24");
         am.setMeetingType(2);
-//        int i = meetingDao.save(am);
+        int i = meetingDao.save(am);
         return "success";
     }
 }
