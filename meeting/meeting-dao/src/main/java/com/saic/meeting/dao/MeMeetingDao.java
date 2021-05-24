@@ -2,11 +2,12 @@ package com.saic.meeting.dao;
 
 import com.saic.meeting.model.MeMeetingAm;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
-//@Mapper
+import java.util.List;
 
-@Repository
+@Mapper
 public interface MeMeetingDao {
     int save(MeMeetingAm am);
+
+    List<MeMeetingAm> query(MeMeetingAm am);
 }

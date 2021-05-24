@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class MeMeetingServiceImpl implements MeMeetingService {
@@ -28,5 +30,10 @@ public class MeMeetingServiceImpl implements MeMeetingService {
         am.setMeetingType(2);
         int i = meetingDao.save(am);
         return "success";
+    }
+
+    @Override
+    public List<MeMeetingAm> query(MeMeetingAm am) {
+        return meetingDao.query(am);
     }
 }
